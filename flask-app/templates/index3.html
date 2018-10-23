@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html class=''>
+    <head>
+	<meta charset='UTF-8'>
+	<meta name="robots" content="noindex">
+	<title>The Experiment Factory stroop</title>
+	<link rel='stylesheet' type='text/css' href="{{ url_for('static', filename='./css/jspsych.css')}}">
+	<link rel='stylesheet' type='text/css' href="{{ url_for('static', filename='./css/default_style.css')}}">
+	<link rel='stylesheet' type='text/css' href="{{ url_for('static', filename='./css/style.css')}}">
+    </head>
+    <body>
+	<script src="{{ url_for('static', filename='jquery.min.js')}}"></script>
+	<script src="{{ url_for('static', filename='math.min.js')}}"></script>
+	<script src="{{ url_for('static', filename='jspsych-6.0.5/jspsych.js')}}"></script>
+	<script src="{{ url_for('static', filename='jspsych-6.0.5/plugins/jspsych-text.js')}}"></script>
+	<script src="{{ url_for('static', filename='jspsych-6.0.5/plugins/jspsych-call-function.js')}}"></script>
+	<script src="{{ url_for('static', filename='jspsych-6.0.5/plugins/jspsych-survey-text.js')}}"></script>
+	<script src="{{ url_for('static', filename='jspsych-6.0.5/poldrack_plugins/jspsych-poldrack-text.js')}}"></script>
+	<script src="{{ url_for('static', filename='jspsych-6.0.5/poldrack_plugins/jspsych-poldrack-instructions.js')}}"></script>
+	<script src="{{ url_for('static', filename='jspsych-6.0.5/poldrack_plugins/jspsych-attention-check.js')}}"></script>
+	<script src="{{ url_for('static', filename='jspsych-6.0.5/poldrack_plugins/jspsych-poldrack-single-stim.js')}}"></script>
+	<script src="{{ url_for('static', filename='jspsych-6.0.5/poldrack_plugins/jspsych-single-stim-button.js')}}"></script>
+	<script src="{{ url_for('static', filename='jspsych-6.0.5/poldrack_plugins/poldrack_utils.js')}}"></script>
+	<script src="{{ url_for('static', filename='jspsych-6.0.5/poldrack_plugins/jspsych-poldrack-categorize.js')}}"></script>
+	<script src="{{ url_for('static', filename='experiment.js')}}"></script>
+	<script>
+	 $( document ).ready(function() {
+	     jsPsych.init({
+		 timeline: stroop_experiment,
+		 display_element: "getDisplayElement",
+		 fullscreen: true,
+		 on_trial_finish: function(data){
+		     addID('stroop')
+		 },
+		 on_finish: function(data){
+		     jsPsych.data.addProperties({
+			 id_number: {{ id_number }},
+			 sex: "{{ sex }}",
+			 age: {{ age }},
+			 date: new Date()
+		     });
+		     $.ajax({
+                         type: "POST",
+                         url: '/output1',
+                         data: jsPsych.data.dataAsJSON(),
+                         success: function(){ document.location = "/logout"},
+                         dataType: 'json',
+                         contentType: "application/json",
+                         // Endpoint not running, local save
+                         error: function(err) {
+			     if (err.status == 200){
+				 document.location = "/logout1";
+                             } else {
+                                 // If error, assue local save
+                                 //console.log(data)
+                                 jsPsych.data.localSave('stroop-results-{{ id_number }}.csv', 'csv');
+                                 //document.location = "/logout";
+                             }
+                         }
+                     });
+		 }
+	     });
+	 });
+	</script>
+    </body>
+</html>
