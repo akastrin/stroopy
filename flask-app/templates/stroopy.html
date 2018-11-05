@@ -3,7 +3,7 @@
     <head>
 	<meta charset='UTF-8'>
 	<meta name="robots" content="noindex">
-	<title>The Experiment Factory stroop</title>
+	<title>Stroopy</title>
 	<link rel='stylesheet' type='text/css' href="{{ url_for('static', filename='./css/jspsych.css')}}">
 	<link rel='stylesheet' type='text/css' href="{{ url_for('static', filename='./css/default_style.css')}}">
 	<link rel='stylesheet' type='text/css' href="{{ url_for('static', filename='./css/style.css')}}">
@@ -34,14 +34,19 @@
 		 },
 		 on_finish: function(data){
 		     jsPsych.data.addProperties({
-			 id_number: {{ id_number }},
-			 sex: "{{ sex }}",
-			 age: {{ age }},
-			 date: new Date()
+			 id_number: {{ form.id_number.data }}
 		     });
+                     var csrf_token = "{{ csrf_token() }}";
+                     $.ajaxSetup({
+                         beforeSend: function(xhr, settings) {
+                             if (!/^(GET|HEAD|OPTIONS|TRACE)$/i.test(settings.type) && !this.crossDomain) {
+                                 xhr.setRequestHeader("X-CSRFToken", csrf_token);
+                             }
+                         }
+                     });
 		     $.ajax({
                          type: "POST",
-                         url: '/output1',
+                         url: '/output',
                          data: jsPsych.data.dataAsJSON(),
                          success: function(){ document.location = "/logout"},
                          dataType: 'json',
@@ -49,12 +54,10 @@
                          // Endpoint not running, local save
                          error: function(err) {
 			     if (err.status == 200){
-				 document.location = "/logout1";
+				 document.location = "/logout";
                              } else {
                                  // If error, assue local save
-                                 //console.log(data)
-                                 jsPsych.data.localSave('stroop-results-{{ id_number }}.csv', 'csv');
-                                 //document.location = "/logout";
+                                 jsPsych.data.localSave('stroop-results-{{ form.id_number.data }}-{{ form.sex.data }}-{{ form.age.data }}.csv', 'csv');
                              }
                          }
                      });

@@ -8,6 +8,7 @@ from pymongo import MongoClient
 app = Flask(__name__)
 app.config.from_pyfile('settings.cfg')
 csrf = CSRFProtect(app)
+#client = MongoClient('mongodb://localhost:27017')
 client = MongoClient(host=app.config['MONGODB_HOST'], port=app.config['MONGODB_PORT'])
 db = client[app.config['MONGODB_NAME']]
 

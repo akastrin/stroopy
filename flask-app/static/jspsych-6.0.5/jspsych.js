@@ -510,7 +510,8 @@ var jsPsych = (function() {
       if (keyboardNotAllowed) {
         go();
       } else {
-        DOM_target.append('<div class = jspsych-instructions-nav><p>The experiment will launch in fullscreen mode when you click the button below.</p><button id="jspsych-fullscreen-btn" class="jspsych-btn">Launch Experiment</button></div>');
+        //DOM_target.append('<div class = jspsych-instructions-nav><p>The experiment will launch in fullscreen mode when you click the button below.</p><button id="jspsych-fullscreen-btn" class="jspsych-btn">Launch Experiment</button></div>');
+        DOM_target.append('<div class = jspsych-instructions-nav><p>Ob pritisku na gumb se bo eksperiment zagnal v celozaslonskem načinu.</p><button id="jspsych-fullscreen-btn" class="jspsych-btn">Zaženi eksperiment</button></div>');
         $('#jspsych-fullscreen-btn').on('click', function() {
           var element = document.documentElement;
           if (element.requestFullscreen) {

@@ -7,7 +7,7 @@ function assessPerformance() {
 	var trial_count = 0
 	var rt_array = []
 	var rt = 0
-		//record choices participants made
+	//record choices participants made
 	var choice_counts = {}
 	choice_counts[-1] = 0
 	for (var k = 0; k < choices.length; k++) {
@@ -75,104 +75,104 @@ var credit_var = 0
 
 // task specific variables
 var congruent_stim = [{
-	stimulus: '<div class = centerbox><div class = stroop-stim style = "color:red">RED</div></div>',
+	stimulus: '<div class = centerbox><div class = stroop-stim style = "color:red">RDEČA</div></div>',
 	data: {
 		trial_id: 'stim',
 		condition: 'congruent',
 		stim_color: 'red',
 		stim_word: 'red',
-		correct_response: 82
+		correct_response: 66
 	},
-	key_answer: 82
+	key_answer: 66
 }, {
-	stimulus: '<div class = centerbox><div class = stroop-stim style = "color:blue">BLUE</div></div>',
+	stimulus: '<div class = centerbox><div class = stroop-stim style = "color:blue">MODRA</div></div>',
 	data: {
 		trial_id: 'stim',
 		condition: 'congruent',
 		stim_color: 'blue',
 		stim_word: 'blue',
-		correct_response: 66
+		correct_response: 78
 	},
-	key_answer: 66
+	key_answer: 78
 }, {
-	stimulus: '<div class = centerbox><div class = stroop-stim style = "color:green">GREEN</div></div>',
+	stimulus: '<div class = centerbox><div class = stroop-stim style = "color:green">ZELENA</div></div>',
 	data: {
 		trial_id: 'stim',
 		condition: 'congruent',
 		stim_color: 'green',
 		stim_word: 'green',
-		correct_response: 71
+		correct_response: 77
 	},
-	key_answer: 71
+	key_answer: 77
 }];
 
 var incongruent_stim = [{
-	stimulus: '<div class = centerbox><div class = stroop-stim style = "color:red">BLUE</div></div>',
+	stimulus: '<div class = centerbox><div class = stroop-stim style = "color:red">MODRA</div></div>',
 	data: {
 		trial_id: 'stim',
 		condition: 'incongruent',
 		stim_color: 'red',
 		stim_word: 'blue',
-		correct_response: 82
+		correct_response: 66
 	},
-	key_answer: 82
+	key_answer: 66
 }, {
-	stimulus: '<div class = centerbox><div class = stroop-stim style = "color:red">GREEN</div></div>',
+	stimulus: '<div class = centerbox><div class = stroop-stim style = "color:red">ZELENA</div></div>',
 	data: {
 		trial_id: 'stim',
 		condition: 'incongruent',
 		stim_color: 'red',
 		stim_word: 'green',
-		correct_response: 82
+		correct_response: 66
 	},
-	key_answer: 82
+	key_answer: 66
 }, {
-	stimulus: '<div class = centerbox><div class = stroop-stim style = "color:blue">RED</div></div>',
+	stimulus: '<div class = centerbox><div class = stroop-stim style = "color:blue">RDEČA</div></div>',
 	data: {
 		trial_id: 'stim',
 		condition: 'incongruent',
 		stim_color: 'blue',
 		stim_word: 'red',
-		correct_response: 66
+		correct_response: 78
 	},
-	key_answer: 66
+	key_answer: 78
 }, {
-	stimulus: '<div class = centerbox><div class = stroop-stim style = "color:blue">GREEN</div></div>',
+	stimulus: '<div class = centerbox><div class = stroop-stim style = "color:blue">ZELENA</div></div>',
 	data: {
 		trial_id: 'stim',
 		condition: 'incongruent',
 		stim_color: 'blue',
 		stim_word: 'green',
-		correct_response: 66
+		correct_response: 78
 	},
-	key_answer: 66
+	key_answer: 78
 }, {
-	stimulus: '<div class = centerbox><div class = stroop-stim style = "color:green">RED</div></div>',
+	stimulus: '<div class = centerbox><div class = stroop-stim style = "color:green">RDEČA</div></div>',
 	data: {
 		trial_id: 'stim',
 		condition: 'incongruent',
 		stim_color: 'green',
 		stim_word: 'red',
-		correct_response: 71
+		correct_response: 77
 	},
-	key_answer: 71
+	key_answer: 77
 }, {
-	stimulus: '<div class = centerbox><div class = stroop-stim style = "color:green">BLUE</div></div>',
+	stimulus: '<div class = centerbox><div class = stroop-stim style = "color:green">MODRA</div></div>',
 	data: {
 		trial_id: 'stim',
 		condition: 'incongruent',
 		stim_color: 'green',
 		stim_word: 'blue',
-		correct_response: 71
+		correct_response: 77
 	},
-	key_answer: 71
+	key_answer: 77
 }];
 var stims = [].concat(congruent_stim, congruent_stim, incongruent_stim)
-var practice_len = 1//24
+var practice_len = 2//24
 var practice_stims = jsPsych.randomization.repeat(stims, practice_len / 12, true)
-var exp_len = 2//96
+var exp_len = 5//96
 var test_stims = jsPsych.randomization.repeat(stims, exp_len / 12, true)
-var choices = [66, 71, 82]
+var choices = [66, 78, 77]
 var exp_stage = 'practice'
 
 /* ************************************ */
@@ -210,11 +210,12 @@ var post_task_block = {
 
 /* define static blocks */
 var response_keys =
-	'<ul list-text><li><span class = "large" style = "color:red">WORD</span>: "R key"</li><li><span class = "large" style = "color:blue">WORD</span>: "B key"</li><li><span class = "large" style = "color:green">WORD</span>: "G key"</li></ul>'
+	'<ul list-text><li><span class = "large" style = "color:red">BESEDA</span>: "b tipka"</li><li><span class = "large" style = "color:blue">BESEDA</span>: "n tipka"</li><li><span class = "large" style = "color:green">BESEDA</span>: "m tipka"</li></ul>'
 
 
 var feedback_instruct_text =
-	'Welcome to the experiment. This experiment will take about 8 minutes. Press <strong>enter</strong> to begin.'
+	//'Welcome to the experiment. This experiment will take about 8 minutes. Press <strong>enter</strong> to begin.'
+        'Pozdravljeni! Eksperiment bo trajal približno osem minut. Pritisnite <strong>ENTER</strong> za začetek.'
 var feedback_instruct_block = {
 	type: 'poldrack-text',
 	data: {
@@ -226,7 +227,7 @@ var feedback_instruct_block = {
 	timing_response: 180000
 };
 /// This ensures that the subject does not read through the instructions too quickly.  If they do it too quickly, then we will go over the loop again.
-var instructions_block = {
+/*var instructions_block = {
 	type: 'poldrack-instructions',
 	data: {
 		trial_id: "instruction"
@@ -238,11 +239,27 @@ var instructions_block = {
 	allow_keys: false,
 	show_clickable_nav: true,
 	timing_post_trial: 1000
+};*/
+
+
+var instructions_block = {
+	type: 'poldrack-instructions',
+	data: {
+		trial_id: "instruction"
+	},
+	pages: [
+		'<div class = centerbox><p class = block-text>Ena za drugo se bodo prikazovale besede RDEČA, MODRA in ZELENA. Besede bodo različno obarvane, npr.: <span class = "large" style = "color:blue">RDEČA</span>, <span class = "large" style = "color:blue">MODRA</span> ali <span class = "large" style = "color:red">MODRA</span>.</p><p class = block-text>Vaša naloga je, da pritisnete tipko, ki ustreza <strong>barvi</strong> besede. Pomembno je, da odgovarjate hitro in natančno. Uporabite naslednje tipke:</p>' +
+		response_keys + '</div>'
+	],
+	allow_keys: false,
+	show_clickable_nav: true,
+	timing_post_trial: 1000
 };
 
-var instruction_node = {
+
+/*var instruction_node = {
 	timeline: [feedback_instruct_block, instructions_block],
-	/* This function defines stopping criteria */
+	// This function defines stopping criteria
 	loop_function: function(data) {
 		for (i = 0; i < data.length; i++) {
 			if ((data[i].trial_type == 'poldrack-instructions') && (data[i].rt != -1)) {
@@ -259,6 +276,27 @@ var instruction_node = {
 			return false
 		}
 	}
+}*/
+
+var instruction_node = {
+	timeline: [feedback_instruct_block, instructions_block],
+	/* This function defines stopping criteria */
+	loop_function: function(data) {
+		for (i = 0; i < data.length; i++) {
+			if ((data[i].trial_type == 'poldrack-instructions') && (data[i].rt != -1)) {
+				rt = data[i].rt
+				sumInstructTime = sumInstructTime + rt
+			}
+		}
+		if (sumInstructTime <= instructTimeThresh * 1000) {
+			feedback_instruct_text =
+				'Navodila ste prebrali prehitro.  Vzemite si čas in navodila natančno preberite. Pritisnite <strong>ENTER</strong> za nadaljevanje.'
+			return true
+		} else if (sumInstructTime > instructTimeThresh * 1000) {
+			feedback_instruct_text = 'Done with instructions. Pritisnite <strong>ENTER</strong> za nadaljevanje.'
+			return false
+		}
+	}
 }
 
 var end_block = {
@@ -268,7 +306,8 @@ var end_block = {
     	exp_id: 'stroop'
 	},
 	timing_response: 180000,
-	text: '<div class = centerbox><p class = center-block-text>Thanks for completing this task!</p><p class = center-block-text>Press <strong>enter</strong> to continue.</p></div>',
+	//text: '<div class = centerbox><p class = center-block-text>Thanks for completing this task!</p><p class = center-block-text>Press <strong>enter</strong> to continue.</p></div>',
+        text: '<div class = centerbox><p class = center-block-text>Hvala za sodelovanje!</p><p class = center-block-text>Pritisnite <strong>ENTER</strong> za zaključek eksperimenta.</p></div>',
 	cont_key: [13],
 	timing_post_trial: 0,
 	on_finish: assessPerformance
@@ -280,7 +319,8 @@ var start_practice_block = {
 		trial_id: "practice_intro"
 	},
 	timing_response: 180000,
-	text: '<div class = centerbox><p class = block-text>We will start with a few practice trials. Remember, press the key corresponding to the <strong>ink</strong> color of the word: "r" for words colored red, "b" for words colored blue, and "g" for words colored green.</p><p class = block-text>Press <strong>enter</strong> to begin practice.</p></div>',
+	//text: '<div class = centerbox><p class = block-text>We will start with a few practice trials. Remember, press the key corresponding to the <strong>ink</strong> color of the word: "r" for words colored red, "b" for words colored blue, and "g" for words colored green.</p><p class = block-text>Press <strong>enter</strong> to begin practice.</p></div>',
+        text: '<div class = centerbox><p class = block-text>Začeli bomo s poskusno serijo. Pritisnite tipko, ki ustreza <strong>barvi</strong> besede: "b" za besede obarvane rdeče, "n" za besede obarvane modro in "m" za besede obarvane zeleno.</p><p class = block-text>Pritisnite <strong>ENTER</strong> za začetek.</p></div>',
 	cont_key: [13],
 	timing_post_trial: 1000
 };
@@ -291,7 +331,8 @@ var start_test_block = {
 		trial_id: "test_intro"
 	},
 	timing_response: 180000,
-	text: '<div class = centerbox><p class = center-block-text>We will now start the test. Respond exactly like you did during practice.</p><p class = center-block-text>Press <strong>enter</strong> to begin the test.</p></div>',
+	//text: '<div class = centerbox><p class = center-block-text>We will now start the test. Respond exactly like you did during practice.</p><p class = center-block-text>Press <strong>enter</strong> to begin the test.</p></div>',
+        text: '<div class = centerbox><p class = center-block-text>Zdaj bomo začeli s testno serijo. Odgovarjajte enako kot v poskusni seriji.</p><p class = center-block-text>Pritisnite <strong>ENTER</strong> za začetek.</p></div>',
 	cont_key: [13],
 	timing_post_trial: 1000,
 	on_finish: function() {
@@ -319,7 +360,7 @@ var fixation_block = {
 stroop_experiment = []
 stroop_experiment.push(instruction_node)
 stroop_experiment.push(start_practice_block)
-	/* define test trials */
+/* define test trials */
 for (i = 0; i < practice_len; i++) {
 	stroop_experiment.push(fixation_block)
 	var practice_block = {
@@ -328,9 +369,12 @@ for (i = 0; i < practice_len; i++) {
 		data: practice_stims.data[i],
 		key_answer: practice_stims.key_answer[i],
 		is_html: true,
-		correct_text: '<div class = fb_box><div class = center-text><font size = 20>Correct!</font></div></div>',
-		incorrect_text: '<div class = fb_box><div class = center-text><font size = 20>Incorrect</font></div></div>',
-		timeout_message: '<div class = fb_box><div class = center-text><font size = 20>Respond Faster!</font></div></div>',
+		//correct_text: '<div class = fb_box><div class = center-text><font size = 20>Correct!</font></div></div>',
+                correct_text: '<div class = fb_box><div class = center-text><font size = 20>Pravilno!</font></div></div>',
+		//incorrect_text: '<div class = fb_box><div class = center-text><font size = 20>Incorrect</font></div></div>',
+                incorrect_text: '<div class = fb_box><div class = center-text><font size = 20>Nepravilno!</font></div></div>',
+		//timeout_message: '<div class = fb_box><div class = center-text><font size = 20>Respond Faster!</font></div></div>',
+                timeout_message: '<div class = fb_box><div class = center-text><font size = 20>Odgovarjajte hitreje!</font></div></div>',
 		choices: choices,
 		timing_response: 1500,
 		timing_stim: -1,
@@ -350,7 +394,7 @@ stroop_experiment.push(attention_node)
 
 
 stroop_experiment.push(start_test_block)
-	/* define test trials */
+/* define test trials */
 for (i = 0; i < exp_len; i++) {
 	stroop_experiment.push(fixation_block)
 	var test_block = {
@@ -359,9 +403,12 @@ for (i = 0; i < exp_len; i++) {
 		data: test_stims.data[i],
 		key_answer: test_stims.key_answer[i],
 		is_html: true,
-		correct_text: '<div class = fb_box><div class = center-text><font size = 20>Correct!</font></div></div>',
-		incorrect_text: '<div class = fb_box><div class = center-text><font size = 20>Incorrect</font></div></div>',
-		timeout_message: '<div class = fb_box><div class = center-text><font size = 20>Respond Faster!</font></div></div>',
+		//correct_text: '<div class = fb_box><div class = center-text><font size = 20>Correct!</font></div></div>',
+                correct_text: '<div class = fb_box><div class = center-text><font size = 20>Pravilno!</font></div></div>',
+		//incorrect_text: '<div class = fb_box><div class = center-text><font size = 20>Incorrect</font></div></div>',
+                incorrect_text: '<div class = fb_box><div class = center-text><font size = 20>Nepravilno!</font></div></div>',
+		//timeout_message: '<div class = fb_box><div class = center-text><font size = 20>Respond Faster!</font></div></div>',
+                timeout_message: '<div class = fb_box><div class = center-text><font size = 20>Odgovarjajte hitreje!</font></div></div>',
 		choices: choices,
 		timing_response: 1500,
 		timing_stim: -1,
@@ -378,5 +425,5 @@ for (i = 0; i < exp_len; i++) {
 	stroop_experiment.push(test_block)
 }
 stroop_experiment.push(attention_node)
-stroop_experiment.push(post_task_block)
+//stroop_experiment.push(post_task_block)
 stroop_experiment.push(end_block)
