@@ -46,15 +46,15 @@
                      });
 		     $.ajax({
                          type: "POST",
-                         url: '/output',
+                         url: "{{ url_for('.output') }}",
                          data: jsPsych.data.dataAsJSON(),
-                         success: function(){ document.location = "/logout"},
+                         success: function(){ document.location = "{{ url_for('.logout') }}"},
                          dataType: 'json',
                          contentType: "application/json",
                          // Endpoint not running, local save
                          error: function(err) {
 			     if (err.status == 200){
-				 document.location = "/logout";
+				 document.location = "{{ url_for('.logout') }}";
                              } else {
                                  // If error, assue local save
                                  jsPsych.data.localSave('stroop-results-{{ form.id_number.data }}-{{ form.sex.data }}-{{ form.age.data }}.csv', 'csv');
